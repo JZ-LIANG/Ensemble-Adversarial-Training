@@ -1,0 +1,16 @@
+.ipynb_checkpoints
+__pycache__
+history_main
+checkpoints/*
+*.pyc
+*.tar
+*.pth
+*.log
+*.txt
+*.so
+
+** temp/
+temp
+*.log
+*.sh
+
