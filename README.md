@@ -61,19 +61,19 @@ tensorboard_path = 'tensorboard/cifar10/adv_train/' + trial_name +'/'
 3. Setting options for training schema, refered from [arXiv:1611.01236](https://arxiv.org/abs/1611.01236) and [arXiv:1705.07204](https://arxiv.org/abs/1705.07204) :
 	* option1 : distribution for random epsilon
 ```
-		arg.eps range (0,1) : fixed epsilon
-		arg.eps = 1 		: [arXiv:1611.01236](https://arxiv.org/abs/1611.01236), favor small epsilon
-		arg.eps = 2 		: uniform distribution, even the possibility for large and small eps
+arg.eps range (0,1) : fixed epsilon
+arg.eps = 1 		: [arXiv:1611.01236](https://arxiv.org/abs/1611.01236), favor small epsilon
+arg.eps = 2 		: uniform distribution, even the possibility for large and small eps
 ```
 	* option2: attacking method
 ```
-		arg.attacker = 'stepll'	: Step.L.L adv input, [arXiv:1705.07204](https://arxiv.org/abs/1705.07204)
-		arg.attacker = 'fgsm'	: fgsm adv input 
+arg.attacker = 'stepll'	: Step.L.L adv input, [arXiv:1705.07204](https://arxiv.org/abs/1705.07204)
+arg.attacker = 'fgsm'	: fgsm adv input 
  ``` 
 	* option3: loss 
 ```
-		arg.loss_schema = 'averaged': [ftramer/ensemble-adv-training](https://github.com/ftramer/ensemble-adv-training), loss no bias
-		arg.loss_schema = 'weighted': [arXiv:1611.01236](https://arxiv.org/abs/1611.01236), loss favor for clean input
+arg.loss_schema = 'averaged': [ftramer/ensemble-adv-training](https://github.com/ftramer/ensemble-adv-training), loss no bias
+arg.loss_schema = 'weighted': [arXiv:1611.01236](https://arxiv.org/abs/1611.01236), loss favor for clean input
 ```
 
 <br>
