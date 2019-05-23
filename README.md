@@ -79,17 +79,20 @@ arg.loss_schema = 'weighted': [arXiv:1611.01236](https://arxiv.org/abs/1611.0123
 <br>
 
 
-## Example
+## Simple Example
 
 ```bash
 CUDA_VISIBLE_DEVICES=2,3 python3 main_ens_adv_train_cifar10.py --eps 2 --attacker 'stepll' --loss_schema 'averaged' --dataset 'cifar10'
 ```
+* a resnet34 model adv training on CIFAR10, 
+	adv_generators: [resnet18, resnet50, googlenet, mobilenet]
+	holdout models: [resnet101]
 
-* 1. we can see from the following figure that as training the loss decrease(for both clean and adv images). 
+* we can see from the following figure that as training the **loss decrease** (for both clean and adv images). 
 
-* 2. Specially there is violent oscillation in the adv_loss in the first half of the training procedure, which is due to we randomize the magnitude of epsilon at each batch. when epsilon is change from small to a large value, loss jump drastically, which match our expectation that it is hard to learn from adv input.
+* Specially there is violent oscillation in the adv_loss in the first half of the training procedure, which is due to we randomize the magnitude of epsilon at each batch. when epsilon is change from small to a large value, loss jump drastically, which match our expectation that **it is hard to learn from adv input**.
 
-* 3. The oscillation of adv_loss is damped after 30k, showing that as the adv training going on, the adv_loss decrease and converge and the top1 accuracy on adv image increase to around the same level as clean images, regardless the magnitude of epsilon and the randomness of the adv_models, which showing model start to learning from perturbated input.
+* The oscillation of adv_loss is damped after **30k iter**, showing that as the adv training going on, the adv_loss decrease and converge and the top1 accuracy on adv image increase to around the same level as clean images, regardless the magnitude of epsilon and the randomness of the adv_models, which showing model start to learning from perturbated input.
 
 <p align="center">
 <img src="images/tensorboard.png" >
@@ -99,4 +102,6 @@ CUDA_VISIBLE_DEVICES=2,3 python3 main_ens_adv_train_cifar10.py --eps 2 --attacke
 
 
 ## note
-make sure you have enough GPU memory to load all the pre-trained-static models. 
+Make sure you have enough GPU memory to load all the pre-trained-static models. 
+<br>
+Compared with the refered [tensorflow 1.0 version](https://github.com/ftramer/ensemble-adv-training), which need to feed input images to all candidate adv generators when generating adv inputs, since the static computational graph in TF 1.0. This code just need to feed one adv_model (the currently selected one) for adv input generating, enjoying the advantage of dynamic computational graph in Pytorch, which (MAYBE) reduce the training time and allow to have more candidate-adv-generators.
