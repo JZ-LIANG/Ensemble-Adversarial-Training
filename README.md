@@ -59,20 +59,20 @@ tensorboard_path = 'tensorboard/cifar10/adv_train/' + trial_name +'/'
 ```
 
 3. Setting options for training schema, refered from [arXiv:1611.01236](https://arxiv.org/abs/1611.01236) and [arXiv:1705.07204](https://arxiv.org/abs/1705.07204) :
-	* option1 : distribution for random epsilon
+* option1 : distribution for random epsilon
 ```
 arg.eps range (0,1) : fixed epsilon
 arg.eps = 1 		: [arXiv:1611.01236](https://arxiv.org/abs/1611.01236), favor small epsilon
 arg.eps = 2 		: uniform distribution, even the possibility for large and small eps
 ```
-	* option2: attacking method
+* option2: attacking method
 ```
 arg.attacker = 'stepll'	: Step.L.L adv input, [arXiv:1705.07204](https://arxiv.org/abs/1705.07204)
 arg.attacker = 'fgsm'	: fgsm adv input 
  ``` 
-	* option3: loss 
+* option3: loss 
 ```
-arg.loss_schema = 'averaged': [ftramer/ensemble-adv-training](https://github.com/ftramer/ensemble-adv-training), loss no bias
+arg.loss_schema = 'averaged': no bias loss 
 arg.loss_schema = 'weighted': [arXiv:1611.01236](https://arxiv.org/abs/1611.01236), loss favor for clean input
 ```
 
@@ -80,6 +80,14 @@ arg.loss_schema = 'weighted': [arXiv:1611.01236](https://arxiv.org/abs/1611.0123
 
 
 ## Simple Example
+
+| Accuracy     | sources              | holdout_sources          |
+|--------------|----------|-----------|-----------------|--------|
+| Target       | resnet18 | googlenet | resnet101       | vgg_11 |
+|--------------|----------|-----------|-----------------|--------|
+| ResNet34     | 17.44    | 18.36     | 18.09           | 18.13  |
+| ResNet34_adv | 63.50    | 66.25     | 64.89           | 63.77  |
+* (adv training on 200 epochs, more epochs would lead to higher Acc)
 
 ```bash
 CUDA_VISIBLE_DEVICES=2,3 python3 main_ens_adv_train_cifar10.py --eps 2 --attacker 'stepll' --loss_schema 'averaged' --dataset 'cifar10'
@@ -104,4 +112,6 @@ CUDA_VISIBLE_DEVICES=2,3 python3 main_ens_adv_train_cifar10.py --eps 2 --attacke
 ## note
 Make sure you have enough GPU memory to load all the pre-trained-static models. 
 <br>
-Compared with the refered [tensorflow 1.0 version](https://github.com/ftramer/ensemble-adv-training), which need to feed input images to all candidate adv generators when generating adv inputs, since the static computational graph in TF 1.0. This code just need to feed one adv_model (the currently selected one) for adv input generating, enjoying the advantage of dynamic computational graph in Pytorch, which (MAYBE) reduce the training time and allow to have more candidate-adv-generators.
+<br>
+Compared with the refered [tensorflow 1.0 version](https://github.com/ftramer/ensemble-adv-training), which need to feed input images to all candidate adv generators when generating adv inputs, since the **static computational graph in TF 1.0**. <br>
+This code just need to feed one adv_model (the currently selected one) for adv input generating, enjoying the advantage of **dynamic computational graph** in Pytorch, which (MAYBE) reduce the training time and allow to have more candidate-adv-generators.
