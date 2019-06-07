@@ -80,8 +80,7 @@ arg.loss_schema = 'weighted': [arXiv:1611.01236](https://arxiv.org/abs/1611.0123
 
 
 ## Simple Example
-<center>
-<table class="tg">
+<table class="tg" align="center">
   <tr>
     <th class="tg-0pky">Acc.</th>
     <th class="tg-de2y" colspan="2">sources</th>
@@ -109,8 +108,8 @@ arg.loss_schema = 'weighted': [arXiv:1611.01236](https://arxiv.org/abs/1611.0123
     <td class="tg-0pky">63.77</td>
   </tr>
 </table>
-* (adv training on 200 epochs, more epochs would lead to higher Acc)
-</center>
+<center>(adv training on 200 epochs, more epochs would lead to higher Acc)</center>
+
 ```bash
 CUDA_VISIBLE_DEVICES=2,3 python3 main_ens_adv_train_cifar10.py --eps 2 --attacker 'stepll' --loss_schema 'averaged' --dataset 'cifar10'
 ```
