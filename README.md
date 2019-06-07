@@ -81,12 +81,41 @@ arg.loss_schema = 'weighted': [arXiv:1611.01236](https://arxiv.org/abs/1611.0123
 
 ## Simple Example
 
-| Accuracy     | sources              | holdout_sources          |
-|--------------|----------|-----------|-----------------|--------|
-| Target       | resnet18 | googlenet | resnet101       | vgg_11 |
-|--------------|----------|-----------|-----------------|--------|
-| ResNet34     | 17.44    | 18.36     | 18.09           | 18.13  |
-| ResNet34_adv | 63.50    | 66.25     | 64.89           | 63.77  |
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-de2y{border-color:#333333;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0pky">Acc.</th>
+    <th class="tg-de2y" colspan="2">sources</th>
+    <th class="tg-de2y" colspan="2">holdout_sources</th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Target</td>
+    <td class="tg-de2y">resnet18</td>
+    <td class="tg-de2y">googlenet</td>
+    <td class="tg-de2y">resnet101</td>
+    <td class="tg-de2y">vgg_11</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">ResNet34</td>
+    <td class="tg-0pky">17.44</td>
+    <td class="tg-0pky">18.36</td>
+    <td class="tg-0pky">18.09</td>
+    <td class="tg-0pky">18.13</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">ResNet34_adv</td>
+    <td class="tg-0pky">63.50</td>
+    <td class="tg-0pky">66.25</td>
+    <td class="tg-0pky">64.89</td>
+    <td class="tg-0pky">63.77</td>
+  </tr>
+</table>
 * (adv training on 200 epochs, more epochs would lead to higher Acc)
 
 ```bash
