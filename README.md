@@ -80,14 +80,6 @@ arg.loss_schema = 'weighted': [arXiv:1611.01236](https://arxiv.org/abs/1611.0123
 
 
 ## Simple Example
-
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-de2y{border-color:#333333;text-align:left;vertical-align:top}
-</style>
 <table class="tg">
   <tr>
     <th class="tg-0pky">Acc.</th>
